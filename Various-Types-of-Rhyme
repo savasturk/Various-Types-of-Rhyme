@@ -1,0 +1,294 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace _5.katnemödev
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            //SONDAN KONTROL EDİYORUM
+            string str2 = null;
+            string str3 = null;
+            string str4 = null;
+            string str5 = null;
+          
+            bool flag = true;
+            string[] poem = {"I do not like three eggs tand boat",
+                                  "I do not like them in sand boat"};
+            //istenilgiğinde yorumları kaldırıp diğerlerinin kontrolü kolaylaştırmak için eklendi
+            //string[] poem = {"I do not like three eggs and ham",
+            //     "I do not like them Sam I am",
+            //     "I do not like them in a boat",
+            //     "I do not like them in a goat",
+            //     "I do not like them in a house",
+            //     "I do not like those mouses"};
+            //string[] poem = {"Zannetme ki şöyle böyle bir söz",
+            //     "Gel sen dahi söyle böyle bir söz",
+            //"Güzel yüzden ne şöyle böyle bir söz",
+            //"Ne böyle kuru, neyle böyle bir söz"};
+            //string[] poem = {"Közlerine kanar kanar giderim",
+            //"Gözlerine yanar yanar giderim",
+            //"Sözlerini anar anar giderim",
+            //"Anar giderim"};
+            //string[] poem = {"kök kalık teg yuklunmaksız azsız suksuz",
+            //     "körgülüg neñ uşik ekşer tapgulugsuz",
+            //     "körser sizni yig yörügçe körmeksizin",
+            //     "körür olar kirtü arıg burkanlarıg"};
+            //string[] poem = {"Elmas için bilenmeden keskin derler",
+            //     "elmas daha keskin benim bilgilim, asilim, ışığım"};
+            //string[] poem = {"One morning you will look in vain",
+            //             "My smile of delicate disdain",
+            //            "one touch. . . and then again",
+            //"Like ink the color red, I stain",
+            //"the hearts of those whose love I drain",
+            //"and then she leaves when I remain",
+            //"Perhaps she sometimes ignites the drifting tallgrass plain",
+            //"rainbows blazing an arc over sparkling rain",
+            //"Perhaps she burns across diamond ice in glacial mountain",
+            //"heartbroken she wondered how long the pain",
+            //"Her face was smooth as porcelain"};
+            //string[] poem = {"The evening hymn that sorrow",
+            //     "We promised love tomorrow",
+            //     "I am an orrow",
+            //"Now pride and love will borrow",
+            //"It will be good morrow"};
+            //string[] poem = {"Zannetme ki şöyle böyle bir söz",
+            //     "Gel sen dahi söyle böyle bir söz",
+            //"Güzel yüzden ne şöyle böyle bir söz",
+            //"Ne böyle kuru, sert böyle bir söz"};
+            //string[] poem = {"Doğru söylerim halk razı değil",
+            //     "Eğri söylerim sen razı değil",
+            //     "Program yazmaya ben razı değil",
+            //     "Bahane uydurmaya kim razı değil",
+            //     "Daha fazla yazmaya herkes razı değil"};
+            //string[] poem = {"Koyun verdi kuzu verdi süt verDi",
+            //     "Yemek verdi ekmek verdi et veRdi",
+            //"Kazma ile dövmeyince zor vErdi"};
+
+
+            for (int i = 0; i <= poem.Length-1; i++)//bütün harfleri küçük olarak ele aldım
+            {
+                    poem[i] = poem[i].ToLower();
+
+            }
+      
+            for (int i = 0; i < poem[0].Length && flag; i++)//harf harf okuması
+            {
+
+                int counter = 0;
+                for (int j = 0; j < poem.Length; j++)//satırları okuması için
+                {
+                    if ((j < poem[j].Length - 1) && (j < poem.Length - 1) && ((poem[j][poem[j].Length - i - 1] == poem[j + 1][poem[j + 1].Length - i - 1])))
+                    //1. kısım dizi taşmasını engellemek için
+                    {
+                        counter++;
+
+                    }
+                    else
+                    {
+                        flag = false;
+                        break;
+                    }
+
+
+                    if (counter == poem.Length - 1)
+                    {
+                        str2 =str2+(Convert.ToString(poem[j][poem[j].Length - i - 1]));
+                        break;
+                    }
+                    
+
+
+                }//burada iç döngü biteck
+            }
+
+            if (str2 !=null)
+            {
+
+
+                int x = 1;
+                for (int j = str2.Length - 1; j >= 0; j--)
+                {
+
+                    str3 = str3 + Convert.ToString(str2[str2.Length - x]);//tersten yazdırdığı için onu döndürmek lazım!
+                    x++;
+                }
+            }
+           
+            if (str3 != null && str3 !="")
+            {
+
+
+                int index;
+                index = str3.IndexOf(" ");
+                if (index != -1)
+                {
+                    str4 = str3.Substring(index);
+                    if (str4 != null)//boş oluncada yazdırmasın diye
+                    {
+                        Console.WriteLine("repetition: " + str4);
+                        Console.WriteLine("Type:  Radif ");
+                    }
+                    str5 = str3.Substring(0, str3.Length - str4.Length);
+                    if (str5 != null && str5 != " " && str5 !="")
+                    {
+                        Console.WriteLine("repetition: " + str5);
+                        Console.WriteLine("Type: Rhyme ");
+                    }
+
+
+                }
+                else
+                {
+                    if (str3 != null && str3 != "")
+                    {
+                        Console.WriteLine("repetition: " + str3);
+                        Console.WriteLine("Type: Rhyme ");
+                    }
+                }
+            }
+           
+
+            //********************************************
+            //BASŞTAN KONTROL EDİYORUM
+
+            string str22 = null;
+
+            string str32 = null;
+            string str42 = null;
+            bool flagg = true;//
+            string[] poemm = {"I do not like three eggs tand boat",
+                                                     "I do not like them in sand boat"};
+            //istenilgiğinde yorumları kaldırıp diğerlerinin kontrolü kolaylaştırmak için eklendi
+            //string[] poemm = {"I do not like three eggs and ham",
+            //     "I do not like them Sam I am",
+            //     "I do not like them in a boat",
+            //     "I do not like them in a goat",
+            //     "I do not like them in a house",
+            //     "I do not like those mouses"};
+            //string[] poemm = {"Zannetme ki şöyle böyle bir söz",
+            //     "Gel sen dahi söyle böyle bir söz",
+            //"Güzel yüzden ne şöyle böyle bir söz",
+            //"Ne böyle kuru, neyle böyle bir söz"};
+            //string[] poemm = {"Közlerine kanar kanar giderim",
+            //                  "Gözlerine yanar yanar giderim",
+            //                  "Sözlerini anar anar giderim",
+            //                  "Anar giderim"};
+            //string[] poemm = {"kök kalık teg yuklunmaksız azsız suksuz",
+            //     "körgülüg neñ uşik ekşer tapgulugsuz",
+            //     "körser sizni yig yörügçe körmeksizin",
+            //     "körür olar kirtü arıg burkanlarıg"};
+            //string[] poemm = {"Elmas için bilenmeden keskin derler",
+            //     "elmas daha keskin benim bilgilim, asilim, ışığım"};
+            //string[] poemm = {"One morning you will look in vain",
+            //             "My smile of delicate disdain",
+            //            "one touch. . . and then again",
+            //"Like ink the color red, I stain",
+            //"the hearts of those whose love I drain",
+            //"and then she leaves when I remain",
+            //"Perhaps she sometimes ignites the drifting tallgrass plain",
+            //"rainbows blazing an arc over sparkling rain",
+            //"Perhaps she burns across diamond ice in glacial mountain",
+            //"heartbroken she wondered how long the pain",
+            //"Her face was smooth as porcelain"};
+            //string[] poemm = {"The evening hymn that sorrow",
+            //     "We promised love tomorrow",
+            //     "I am an orrow",
+            //"Now pride and love will borrow",
+            //"It will be good morrow"};
+            //string[] poemm = {"Zannetme ki şöyle böyle bir söz",
+            //     "Gel sen dahi söyle böyle bir söz",
+            //"Güzel yüzden ne şöyle böyle bir söz",
+            //"Ne böyle kuru, sert böyle bir söz"};
+            //string[] poemm = {"Doğru söylerim halk razı değil",
+            //     "Eğri söylerim sen razı değil",
+            //     "Program yazmaya ben razı değil",
+            //     "Bahane uydurmaya kim razı değil",
+            //     "Daha fazla yazmaya herkes razı değil"};
+            //string[] poemm = {"Koyun verdi kuzu verdi süt verDi",
+            //     "Yemek verdi ekmek verdi et veRdi",
+            //"Kazma ile dövmeyince zor vErdi"};
+
+            for (int i = 0; i <= poemm.Length - 1; i++)
+            {
+
+
+                poemm[i] = poemm[i].ToLower();
+
+
+            }
+            
+            //   disifade:
+            for (int i = 0; i < poemm[0].Length && flagg; i++)//harf harf okuması
+            {//flag varsayılanı kontrol et sonraaa!!!!!!!!!!!!
+
+                int counter = 0;
+                for (int j = 0; j < poemm.Length; j++)//satırları okuması için
+                {
+                    if ((i < poemm[j].Length - 1) && (j < poemm.Length - 1) && ((poemm[j][i] == poemm[j + 1][i])))
+                   
+                    //2. kısım dizi taşmasını engellemek için
+                    {
+                        counter++;
+
+                    }
+                    else
+                    { flagg = false;
+                        break;
+                    }
+
+
+                    if (counter == poemm.Length - 1)
+                    {
+                        str22 = str22+Convert.ToString(poemm[j][i]);
+                        break;
+                    }
+                    
+
+
+                }//burada iç döngü biteck
+            }
+            //ZATEN BAŞTAN KONTROL EDİLDİĞİ İÇİN TERS ÇEVRİLMESİNE GEREK YOK
+
+           if (str22 != " " && str22 !=null )
+           {
+
+                int indexx;
+                indexx = str22.LastIndexOf(" ");
+                if (indexx != -1)
+                {
+                    str32 = str22.Substring(indexx);
+                    if (str32 !=null && str32 !=" ")
+                    {
+                        Console.WriteLine("repetition: "+str32);
+                        Console.WriteLine("Type: Head rhyme ");
+                    }
+                    
+                    str42 = str22.Substring(0, str22.Length - str32.Length);
+                    if (str42 !=null)
+                    {
+                        Console.WriteLine("repetition: " + str42);
+                        Console.WriteLine("Type: Head radif ");
+                    }
+                   
+                }
+                else
+                {
+                    if (str22 != null )
+                    {
+                        Console.WriteLine("repetition: " + str22);
+                        Console.WriteLine("Type: Head Rhyme ");
+                    }
+                }
+
+            }
+            Console.ReadLine();
+           
+        }
+
+    }
+}
